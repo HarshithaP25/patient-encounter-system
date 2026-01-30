@@ -125,17 +125,3 @@ GitHub Actions is used to:
 - Run security scans
 - Run tests with coverage
 
---------------------------------------------------
-
-AUTHOR
-
-Harshitha
-
---------------------------------------------------
-
-PROJECT STATUS
-
-Completed
-Production ready
-Fully tested
-CI enabled
