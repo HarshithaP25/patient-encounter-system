@@ -10,6 +10,7 @@ from src.database import Base, engine, SessionLocal
 from src.models.patient import Patient
 from src.models.doctor import Doctor
 from src.models.appointment import Appointment
+from src.schemas.appointment import AppointmentRead
 
 from src.schemas.patient import PatientCreate, PatientRead
 from src.schemas.doctor import DoctorCreate, DoctorRead
@@ -75,7 +76,7 @@ def get_doctor(doctor_id: int, db: Session = Depends(get_db)):
 # ---------------- APPOINTMENT APIs ----------------
 
 
-@app.post("/appointments", status_code=201)
+@app.post("/appointments", response_model=AppointmentRead, status_code=201)
 def schedule_appointment(data: AppointmentCreate, db: Session = Depends(get_db)):
     try:
         return create_appointment(db, data)

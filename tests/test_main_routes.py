@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from datetime import datetime, timedelta, timezone
-
+from uuid import uuid4
 from src.main import app
 
 client = TestClient(app)
@@ -17,17 +17,20 @@ def test_get_doctor_not_found():
 
 
 def test_create_patient():
+    unique_email = f"test_{uuid4()}@example.com"
+
     response = client.post(
         "/patients",
         json={
             "first_name": "Test",
             "last_name": "User",
-            "email": "testuser@example.com",
+            "email": unique_email,
             "phone": "9999999999",
         },
     )
+
     assert response.status_code == 201
-    assert response.json()["email"] == "testuser@example.com"
+    assert response.json()["email"] == unique_email
 
 
 def test_create_doctor():

@@ -1,9 +1,20 @@
-from pydantic import BaseModel, Field
 from datetime import datetime
+from pydantic import BaseModel
 
 
 class AppointmentCreate(BaseModel):
     patient_id: int
     doctor_id: int
     start_time: datetime
-    duration_minutes: int = Field(ge=15, le=180)
+    duration_minutes: int
+
+
+class AppointmentRead(BaseModel):
+    id: int
+    patient_id: int
+    doctor_id: int
+    start_time: datetime
+    duration_minutes: int
+
+    class Config:
+        from_attributes = True
