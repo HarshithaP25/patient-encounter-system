@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, DateTime, ForeignKey
 from datetime import datetime, timezone
-from database import Base
+from src.database import Base
 
 
 class Appointment(Base):
